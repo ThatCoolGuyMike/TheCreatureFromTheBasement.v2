@@ -9,18 +9,19 @@ public class CreatureButton_Script : MonoBehaviour
     public GameObject Camera2;
     public GameObject Camera2Texture;
     GameObject gameManager;
-
+    GameObject creatureCamera;
 
     private void Start()
     {
    
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
+        creatureCamera = GameObject.FindGameObjectWithTag("CreatureCam");
     }
 
 
     public void Feed()
     {
-        if (gameManager.GetComponent<MainManager>().totalMeat >= 5 && gameManager != null)
+        if (gameManager.GetComponent<MainManager>().totalMeat >= 5 )
         {
             gameManager.GetComponent<MainManager>().totalMeat -= 5;
 

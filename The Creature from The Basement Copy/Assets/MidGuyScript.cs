@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-//needs hecka work
-public class LittleGuyScript : MonoBehaviour
+
+public class MidGuyScript : MonoBehaviour
 {
     public GameObject Camera1;
     public GameObject Camera2;
@@ -12,14 +11,16 @@ public class LittleGuyScript : MonoBehaviour
     [SerializeField] string playerTag = "Player"; // interactible tagged object
 
     [SerializeField] float distanceToPInteract; // makes a float to be used to see if the player if close enough
+    // Start is called before the first frame update
+    void Start()
+    {
 
+    }
+
+    // Update is called once per frame
     void Update()
     {
-        //gets methods 
-        LittleGuyCanInteract();
-
-
-        if (Input.GetKeyDown(KeyCode.E) && LittleGuyCanInteract())// sees if object is able to be interacted with
+        if (Input.GetKeyDown(KeyCode.E) && MidGuyCanInteract())// sees if object is able to be interacted with
         {
 
             Camera1.SetActive(false);
@@ -29,10 +30,8 @@ public class LittleGuyScript : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
 
         }
-
-
     }
-    public bool LittleGuyCanInteract()
+    public bool MidGuyCanInteract()
     {
         GameObject[] InteractibleObject = GameObject.FindGameObjectsWithTag(playerTag); //adds the player object to the player tag in script
 

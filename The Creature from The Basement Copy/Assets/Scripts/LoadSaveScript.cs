@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class LoadSaveScript : MonoBehaviour
 {
-    public int totalMeatValue;
+//method called by buttons
     public void SaveColorClicked()
     {
 
-    //    MainManager.Instance.totalMeat = totalMeatValue;
-
         MainManager.Instance.SaveVariables();//use to save data
     }
-
+    //method called by buttons
     public void LoadColorClicked()
     {
-        //  MainManager.Instance.SaveVariables();
 
         MainManager.Instance.LoadSaveVariables();//use to load data
-      //  totalMeatValue = MainManager.Instance.totalMeat;
-        //   mc.SelectColor(MainManager.Instance.totalMeat);
 
     }
 }

@@ -8,6 +8,10 @@ TagManager:
   - gamemanager
   - creature
   - camera
+  - PlayerCamera
+  - PlayerObject
+  - inGameManager
+  - CreatureCamera
   layers:
   - Default
   - TransparentFX

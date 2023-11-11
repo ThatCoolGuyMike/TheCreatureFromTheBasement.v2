@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 public class BedScript : MonoBehaviour
 {
 
+public Animator animator;
     [SerializeField] float distanceToPInteract; // makes a float to be used to see if the player if close enough
 
     [SerializeField] string playerTag;
     GameObject gameManager;
+    int i;
+
+    public string isSleeping = "isSleeping";
+    bool timer;
     // Start is called before the first frame update
 
     void Start()
@@ -17,18 +23,32 @@ public class BedScript : MonoBehaviour
         playerTag = "Player"; // interactible tagged object
        
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
+        timer = false;
     }
 
 
 
- 
+
+
     void Update()
     {
         //updates the day count
-        if (BedCanInteract() && Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && BedCanInteract())
         {
             gameManager.GetComponent<MainManager>().numDay++;
+            animator.SetBool(isSleeping, true);
+            timer = true;
+        }
 
+        if(timer)
+        {
+             i++;
+            if(i > 100)
+            {
+                animator.SetBool(isSleeping, false);
+                timer = false;
+                i = 0;
+            }
         }
     }
 
@@ -49,5 +69,9 @@ public class BedScript : MonoBehaviour
             }
         }
         return false;
+    }
+    public void SleepAnimationFinnish()
+    {
+        animator.SetBool(isSleeping, false);
     }
 }

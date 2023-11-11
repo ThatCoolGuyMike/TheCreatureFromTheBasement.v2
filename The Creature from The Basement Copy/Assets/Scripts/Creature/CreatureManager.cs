@@ -7,7 +7,7 @@ public class CreatureManager : MonoBehaviour
 {
     public GameObject creature1, creature2, creature3;
     // Start is called before the first frame update
-    public bool creature2Bool, creature3Bool;
+    bool creature2Bool, creature3Bool;
   
 
     GameObject inGameManager;

@@ -12,10 +12,14 @@ public Animator animator;
 
     [SerializeField] string playerTag;
     GameObject gameManager;
-    int i;
+    GameObject inGameManager;
+    GameObject JoanneDialouge;
+    public GameObject sleepDialouge;
+    int i, j;
 
     public string isSleeping = "isSleeping";
-    bool timer;
+    bool timer, timerJ, dialougeDelay;
+    public bool canSleep;
     // Start is called before the first frame update
 
     void Start()
@@ -23,33 +27,42 @@ public Animator animator;
         playerTag = "Player"; // interactible tagged object
        
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
+        inGameManager = GameObject.FindGameObjectWithTag("inGameManager");
+        JoanneDialouge = GameObject.FindGameObjectWithTag("JoanneDialouge");
         timer = false;
+        timerJ = false;
+        canSleep = true;
+        JoanneDialouge.SetActive(false);
+        sleepDialouge.SetActive(false);
+        dialougeDelay = false;
     }
-
-
-
-
 
     void Update()
     {
         //updates the day count
-        if (Input.GetKeyDown(KeyCode.E) && BedCanInteract())
+        if (Input.GetKey(KeyCode.E) && BedCanInteract() && canSleep)
         {
-            gameManager.GetComponent<MainManager>().numDay++;
+           
             animator.SetBool(isSleeping, true);
+            gameManager.GetComponent<MainManager>().numDay++;
             timer = true;
+            canSleep=false;
+            dialougeDelay=false;
+
         }
 
-        if(timer)
+        if (Input.GetKeyDown(KeyCode.E) && BedCanInteract() && !canSleep && dialougeDelay)
         {
-             i++;
-            if(i > 100)
-            {
-                animator.SetBool(isSleeping, false);
-                timer = false;
-                i = 0;
-            }
+            JoanneDialouge.SetActive(true);
+            sleepDialouge.SetActive(true);
+
+            timerJ = true;
+            
         }
+
+        TimerI();
+        TimerJ();
+     
     }
 
 
@@ -70,8 +83,34 @@ public Animator animator;
         }
         return false;
     }
-    public void SleepAnimationFinnish()
+
+    void TimerI()
     {
-        animator.SetBool(isSleeping, false);
+        if (timer)
+        {
+            i++;
+            if (i > 100)
+            {
+                animator.SetBool(isSleeping, false);
+                timer = false;
+                i = 0;
+                canSleep = false;
+                dialougeDelay = true;
+            }
+        }
+    }
+    void TimerJ()
+    {
+        if (timerJ)
+        {
+            j++;
+        }
+        if (j >= 500)
+        {
+            JoanneDialouge.SetActive(false);
+            sleepDialouge.SetActive(false);
+            j = 0;
+            timerJ = false;
+        }
     }
 }

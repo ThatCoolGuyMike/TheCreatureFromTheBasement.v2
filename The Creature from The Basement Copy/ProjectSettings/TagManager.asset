@@ -12,6 +12,9 @@ TagManager:
   - PlayerObject
   - inGameManager
   - CreatureCamera
+  - Bed
+  - pickUpSprite
+  - JoanneDialouge
   layers:
   - Default
   - TransparentFX

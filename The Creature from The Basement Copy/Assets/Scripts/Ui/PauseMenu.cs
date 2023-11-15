@@ -11,11 +11,12 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject cameraScript;
     public GameObject playerScript;
+    public GameObject sun, moon;
 
     [SerializeField] TMP_Text foodCounterText;
     [SerializeField] TMP_Text foodEattenCounterText;
 
-    GameObject gameManager;
+    GameObject gameManager, inGameManager;
 
     void Awake()
     {
@@ -33,7 +34,9 @@ public class PauseMenu : MonoBehaviour
         optionMenu.SetActive(false);
         playerScript = GameObject.FindGameObjectWithTag("Player");
         cameraScript = GameObject.FindGameObjectWithTag("PlayerCamera");
+
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
+        inGameManager = GameObject.FindGameObjectWithTag("inGameManager");
 
     }
 
@@ -61,6 +64,8 @@ public class PauseMenu : MonoBehaviour
 
         if (gameManager != null)
             foodCounterText.text = ("Food Count:" + gameManager.GetComponent<MainManager>().totalMeat);
+
+        DayCycleSprites();
     }
 
     public void BackButton()
@@ -82,5 +87,19 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();//exits program
+    }
+
+    void DayCycleSprites()
+    {
+        if(!inGameManager.GetComponent<GameManagerScript>().IsDay)
+        {
+            moon.SetActive(true);
+            sun.SetActive(false);
+        }
+        if (inGameManager.GetComponent<GameManagerScript>().IsDay)
+        {
+            moon.SetActive(false);
+            sun.SetActive(true);
+        }
     }
 }

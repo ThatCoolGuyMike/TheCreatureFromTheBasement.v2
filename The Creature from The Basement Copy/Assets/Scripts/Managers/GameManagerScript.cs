@@ -8,8 +8,10 @@ using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour
 {
     public static GameManagerScript Instance;
-    GameObject gameManager;
+    GameObject gameManager, bed;
     public bool creature2, creature3;
+    int i;
+    public bool IsDay;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -26,6 +28,8 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
+
+        i = 0;
     }
 
     // Update is called once per frame
@@ -42,6 +46,23 @@ public class GameManagerScript : MonoBehaviour
         {
             creature3 = true;
             creature2 = false;
+        }
+
+        if(bed != null && !bed.GetComponent<BedScript>().canSleep)
+        {
+            IsDay = true;
+            i++;
+            if(i >= 3000)
+            {
+                bed.GetComponent<BedScript>().canSleep = true;
+                i = 0;
+                IsDay = false;
+            }
+           
+        }
+        if(SceneManager.GetSceneByName("MainFloor").isLoaded && bed == null)
+        {
+        bed = GameObject.FindGameObjectWithTag("Bed");
         }
     }
 }

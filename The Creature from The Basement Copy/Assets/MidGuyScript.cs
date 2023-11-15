@@ -11,15 +11,14 @@ public class MidGuyScript : MonoBehaviour
     [SerializeField] string playerTag = "Player"; // interactible tagged object
 
     [SerializeField] float distanceToPInteract; // makes a float to be used to see if the player if close enough
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     void Update()
     {
+        MidGuyCanInteract();
+
+
         if (Input.GetKeyDown(KeyCode.E) && MidGuyCanInteract())// sees if object is able to be interacted with
         {
 
@@ -48,4 +47,4 @@ public class MidGuyScript : MonoBehaviour
         }
         return false;
     }
-}
+} 

@@ -13,12 +13,23 @@ public class PlayerPickUpScript : MonoBehaviour
 
     [SerializeField] bool _canInteract;
 
+    GameObject pickUpSprite;
+
+    private void Start()
+    {
+        pickUpSprite = GameObject.FindGameObjectWithTag("pickUpSprite");
+    }
     // Update is called once per frame
     void Update()
     {
 
         //PickUp(); // calls pick up method
         CanInteract();
+        if(CanInteract())
+        {
+        pickUpSprite.SetActive(true);
+        }
+        else pickUpSprite.SetActive(false);
 
     }
 

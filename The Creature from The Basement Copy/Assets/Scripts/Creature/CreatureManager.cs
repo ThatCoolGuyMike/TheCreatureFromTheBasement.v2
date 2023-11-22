@@ -15,18 +15,15 @@ public class CreatureManager : MonoBehaviour
     {
         inGameManager = GameObject.FindGameObjectWithTag("inGameManager");
 
+
+        if (!inGameManager.GetComponent<GameManagerScript>().creature2 && !inGameManager.GetComponent<GameManagerScript>().creature3) LilCreature();
+
+        if (inGameManager.GetComponent<GameManagerScript>().creature2) MidCreature();
+
+        if (inGameManager.GetComponent<GameManagerScript>().creature3) BigCreature();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (!creature2Bool && !creature3Bool) LilCreature();
-
-        if (creature2Bool) MidCreature();
-
-        if (creature3Bool) BigCreature();
-
-    }
 
     void LilCreature()
     {

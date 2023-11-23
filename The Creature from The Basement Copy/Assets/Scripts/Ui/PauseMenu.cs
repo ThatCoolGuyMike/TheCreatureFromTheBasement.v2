@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject sun, moon;
 
     [SerializeField] TMP_Text foodCounterText;
+    [SerializeField] TMP_Text dayCounterText;
     [SerializeField] TMP_Text foodEattenCounterText;
 
     GameObject gameManager, inGameManager;
@@ -43,7 +44,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && cameraScript != null && !SceneManager.GetSceneByName("MainMenu").isLoaded)
+        if (Input.GetKeyDown(KeyCode.Escape) && cameraScript != null && !SceneManager.GetSceneByName("MainMenu").isLoaded)
         {
             //enables menu and cursor
             optionMenu.SetActive(true);
@@ -64,6 +65,7 @@ public class PauseMenu : MonoBehaviour
 
         if (gameManager != null)
             foodCounterText.text = ("Food Count:" + gameManager.GetComponent<MainManager>().totalMeat);
+            dayCounterText.text = ("Day:" + gameManager.GetComponent<MainManager>().numDay);
 
         DayCycleSprites();
     }

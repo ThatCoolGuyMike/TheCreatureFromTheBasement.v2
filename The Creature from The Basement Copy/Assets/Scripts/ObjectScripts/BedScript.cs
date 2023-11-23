@@ -49,6 +49,8 @@ public Animator animator;
             canSleep=false;
             dialougeDelay=false;
 
+            MainManager.Instance.SaveVariables();//use to save data
+
         }
 
         if (Input.GetKeyDown(KeyCode.E) && BedCanInteract() && !canSleep && dialougeDelay)

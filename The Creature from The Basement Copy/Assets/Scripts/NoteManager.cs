@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RatSpawner_Script : MonoBehaviour
+public class NoteManager : MonoBehaviour
 {
+    public GameObject[] note;
 
-    public GameObject[] ratPrefab;
-
-    GameObject inGameManager;
+     Transform player;
     // Start is called before the first frame update
     void Start()
     {
-        inGameManager = GameObject.FindGameObjectWithTag("inGameManager");
+        player = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame

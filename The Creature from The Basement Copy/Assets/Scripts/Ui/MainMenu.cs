@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
+
+    [Range(0.0f, 10.0f)]
+    public float sliderSensitivity;
+
+    [Range(0.0f, 1.0f)]
+    public float _volume;
     //makes sure the mainMenu cursor 
     private void Start()
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Note_Script : MonoBehaviour
@@ -8,6 +9,8 @@ public class Note_Script : MonoBehaviour
 
     public GameObject Note;
 
+    int i;
+    bool timer;
 
     [SerializeField] float distanceToPickUp; // makes a float to be used to see if the player if close enough
 
@@ -15,7 +18,7 @@ public class Note_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        i = 0;   
     }
 
     // Update is called once per frame
@@ -25,11 +28,24 @@ public class Note_Script : MonoBehaviour
         {
             Note.SetActive(false);
         }
-        if (NoteCanInteract() && Input.GetKeyDown(KeyCode.E))
+        if (NoteCanInteract() && Input.GetKeyDown(KeyCode.E) && !timer)
         {
             Note.SetActive(true);
+            timer = true;
         }
 
+            if (timer)
+            {
+                i++;
+                if (i > 500)
+                {
+
+                    timer = false;
+                    i = 0;
+
+                }
+            }
+        
     }
     public bool NoteCanInteract()
     {

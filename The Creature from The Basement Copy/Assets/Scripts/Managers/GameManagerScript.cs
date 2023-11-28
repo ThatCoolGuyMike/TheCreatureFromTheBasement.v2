@@ -10,7 +10,7 @@ public class GameManagerScript : MonoBehaviour
     public static GameManagerScript Instance;
     GameObject gameManager, bed;
     public bool creature2, creature3;
-    int i;
+    public int i;
     public bool IsDay;
     // Start is called before the first frame update
     private void Awake()
@@ -35,6 +35,10 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+                if(SceneManager.GetSceneByName("MainFloor").isLoaded && bed == null)
+        {
+        bed = GameObject.FindGameObjectWithTag("Bed");
+        }
         //ifs to check if creature is good to use
         if(gameManager.GetComponent<MainManager>().totalEatten >= 10 && gameManager.GetComponent<MainManager>().totalEatten <= 25 && !SceneManager.GetSceneByName("Basement").isLoaded)
         {
@@ -60,9 +64,11 @@ public class GameManagerScript : MonoBehaviour
             }
            
         }
-        if(SceneManager.GetSceneByName("MainFloor").isLoaded && bed == null)
+        if(bed == null)
         {
-        bed = GameObject.FindGameObjectWithTag("Bed");
+            i = 1500;
         }
+
+
     }
 }

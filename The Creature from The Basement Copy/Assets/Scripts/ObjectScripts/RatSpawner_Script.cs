@@ -25,14 +25,18 @@ public class RatSpawner_Script : MonoBehaviour
 
 
 
-        if (!inGameManager.GetComponent<GameManagerScript>().IsDay && mainGameManager.GetComponent<MainManager>().numDay > 1)
+        if (mainGameManager.GetComponent<MainManager>().numDay > 1)
         {
             Instantiate(ratPrefab[0], ratPosition, Quaternion.LookRotation(ratPosition));
 
-            if(!inGameManager.GetComponent<GameManagerScript>().IsDay && mainGameManager.GetComponent<MainManager>().numDay > 4)
+            if(mainGameManager.GetComponent<MainManager>().numDay > 4)
             {
                 Instantiate(ratPrefab[0], ratPosition, Quaternion.LookRotation(ratPosition));
             }
+        }
+        if(!inGameManager.GetComponent<GameManagerScript>().IsDay && mainGameManager.GetComponent<MainManager>().numDay > 1)
+        {
+            Instantiate(ratPrefab[0], ratPosition, Quaternion.LookRotation(ratPosition));
         }
 
     }

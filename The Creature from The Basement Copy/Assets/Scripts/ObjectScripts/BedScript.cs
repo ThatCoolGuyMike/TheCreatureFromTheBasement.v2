@@ -31,19 +31,20 @@ public Animator animator;
         JoanneDialouge = GameObject.FindGameObjectWithTag("JoanneDialouge");
         timer = false;
         timerJ = false;
-        canSleep = true;
+        canSleep = false;
         JoanneDialouge.SetActive(false);
         sleepDialouge.SetActive(false);
         dialougeDelay = false;
+
     }
 
     void Update()
     {
         //updates the day count
-        if (Input.GetKey(KeyCode.E) && BedCanInteract() && canSleep)
+        if (Input.GetKey(KeyCode.E) && BedCanInteract() && !inGameManager.GetComponent<GameManagerScript>().IsDay)
         {
            
-            animator.SetBool(isSleeping, true);
+            animator.SetTrigger("isSleeping");
             gameManager.GetComponent<MainManager>().numDay++;
             timer = true;
             canSleep=false;
@@ -52,8 +53,11 @@ public Animator animator;
             MainManager.Instance.SaveVariables();//use to save data
 
         }
-
-        if (Input.GetKeyDown(KeyCode.E) && BedCanInteract() && !canSleep && dialougeDelay)
+        if(inGameManager.GetComponent<GameManagerScript>().IsDay)
+        {
+            animator.ResetTrigger("isSleeping");
+        }
+        if (Input.GetKeyDown(KeyCode.E) && BedCanInteract() && inGameManager.GetComponent<GameManagerScript>().IsDay)
         {
             JoanneDialouge.SetActive(true);
             sleepDialouge.SetActive(true);
@@ -93,7 +97,7 @@ public Animator animator;
             i++;
             if (i > 100)
             {
-                animator.SetBool(isSleeping, false);
+
                 timer = false;
                 i = 0;
                 canSleep = false;

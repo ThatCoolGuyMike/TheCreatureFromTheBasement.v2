@@ -7,8 +7,7 @@ public class CreatureManager : MonoBehaviour
 {
     public GameObject creature1, creature2, creature3;
     // Start is called before the first frame update
-    bool creature2Bool, creature3Bool;
-  
+
 
     GameObject inGameManager;
     void Start()
@@ -33,12 +32,7 @@ public class CreatureManager : MonoBehaviour
             creature2.SetActive(false);
             creature3.SetActive(false);
         }
-        //uses bools from game manager to turn on these bools
-        if (inGameManager.GetComponent<GameManagerScript>().creature2)
-        {
-            creature2Bool = true;
-            creature3Bool = false;
-        }
+
     }
 
     void MidCreature()
@@ -50,11 +44,7 @@ public class CreatureManager : MonoBehaviour
             creature3.SetActive(false);
         }
 
-        if (inGameManager.GetComponent<GameManagerScript>().creature3)
-        {
-            creature3Bool = true;
-            creature2Bool = false;
-        }
+
     }
 
     void BigCreature()

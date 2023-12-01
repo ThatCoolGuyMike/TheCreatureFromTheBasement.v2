@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovment : MonoBehaviour
 {
     [Header("Movment")]
 
     [SerializeField] float moveSpeed;
-
+    GameObject inGameManager;
     public Transform orientation;
 
     [SerializeField] float drag;
@@ -24,6 +25,13 @@ public class PlayerMovment : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        inGameManager = GameObject.FindGameObjectWithTag("inGameManager");
+
+        if (inGameManager.GetComponent<GameManagerScript>().IsInBasement)
+        {
+            if(!SceneManager.GetSceneByName("Basement").isLoaded)
+            rb.position = new Vector3(-36,-.03f, 9);
+        }
 
     }
 

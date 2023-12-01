@@ -131,8 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  distanceToPInteract: 5
+  distanceToPInteract: 3
   playerTag: Player
+  sleepDialouge: {fileID: 0}
   isSleeping: isSleeping
   canSleep: 0
 --- !u!1 &7749452500833931463

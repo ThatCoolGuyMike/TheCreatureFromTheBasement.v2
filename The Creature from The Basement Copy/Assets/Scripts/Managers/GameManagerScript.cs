@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
+    public GameObject JoanneDialouge;
+    public GameObject NoiseDialouge;
     public static GameManagerScript Instance;
     GameObject gameManager, bed;
     public bool creature2, creature3;
-    public int i;
-    public bool IsDay;
+    public int i, j;
+    public bool IsDay, IsInBasement, timerJ;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -28,7 +30,7 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
-
+        IsInBasement = false;
         i = 0;
     }
 
@@ -64,9 +66,10 @@ public class GameManagerScript : MonoBehaviour
             }
            
         }
-        if(bed == null)
+        if(SceneManager.GetSceneByName("Basement").isLoaded)
         {
-            i = 1500;
+            i = 3000;
+            IsInBasement = true;
         }
 
 

@@ -8,13 +8,16 @@ public class MidButtons : MonoBehaviour
     public GameObject Camera2;
     public GameObject Camera2Texture;
     GameObject gameManager;
+    public GameObject MidGuyDialouge;
 
-
+    int i;
+    bool timerI;
     private void Start()
     {
 
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
-
+        MidGuyDialouge.SetActive(true);
+        timerI = true;
     }
 
 
@@ -34,5 +37,18 @@ public class MidButtons : MonoBehaviour
         Camera2Texture.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+    private void Update()
+    {
+        if (timerI)
+        {
+            i++;
+        }
+        if (i >= 500)
+        {
+            MidGuyDialouge.SetActive(false);
+            i = 0;
+            timerI = false;
+        }
     }
 }

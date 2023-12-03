@@ -58,7 +58,7 @@ public class GameManagerScript : MonoBehaviour
         {
             IsDay = true;
             i++;
-            if(i >= 3000)
+            if(i >= 5000)
             {
                 bed.GetComponent<BedScript>().canSleep = true;
                 i = 0;
@@ -68,7 +68,7 @@ public class GameManagerScript : MonoBehaviour
         }
         if(SceneManager.GetSceneByName("Basement").isLoaded)
         {
-            i = 3000;
+            i = 5000;
             IsInBasement = true;
         }
 

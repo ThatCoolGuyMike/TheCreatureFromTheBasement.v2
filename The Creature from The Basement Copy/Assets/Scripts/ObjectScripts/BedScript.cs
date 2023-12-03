@@ -18,9 +18,10 @@ public Animator animator;
     int i, j;
 
     public string isSleeping = "isSleeping";
-    bool timer, timerJ, dialougeDelay;
+    bool timer, timerJ;
     public bool canSleep;
     // Start is called before the first frame update
+    AudioSource NotEppyAudio;
 
     void Start()
     {
@@ -29,12 +30,13 @@ public Animator animator;
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
         inGameManager = GameObject.FindGameObjectWithTag("inGameManager");
         JoanneDialouge = GameObject.FindGameObjectWithTag("JoanneDialouge");
+        NotEppyAudio = GetComponent<AudioSource>();
         timer = false;
         timerJ = false;
         canSleep = false;
         JoanneDialouge.SetActive(false);
         sleepDialouge.SetActive(false);
-        dialougeDelay = false;
+        
 
     }
 
@@ -43,32 +45,34 @@ public Animator animator;
         //updates the day count
         if (Input.GetKey(KeyCode.E) && BedCanInteract() && !inGameManager.GetComponent<GameManagerScript>().IsDay)
         {
-           
+
             animator.SetTrigger("isSleeping");
             gameManager.GetComponent<MainManager>().numDay++;
             timer = true;
-            canSleep=false;
-            dialougeDelay=false;
+            canSleep = false;
+
 
             MainManager.Instance.SaveVariables();//use to save data
 
         }
-        if(inGameManager.GetComponent<GameManagerScript>().IsDay)
+        if (inGameManager.GetComponent<GameManagerScript>().IsDay)
         {
             animator.ResetTrigger("isSleeping");
         }
         if (Input.GetKeyDown(KeyCode.E) && BedCanInteract() && inGameManager.GetComponent<GameManagerScript>().IsDay)
         {
+            NotEppyAudio.Play();
             JoanneDialouge.SetActive(true);
             sleepDialouge.SetActive(true);
 
             timerJ = true;
-            
+
         }
 
         TimerI();
         TimerJ();
-     
+        //Check to see if you just set the toggle to positive
+
     }
 
 
@@ -101,7 +105,7 @@ public Animator animator;
                 timer = false;
                 i = 0;
                 canSleep = false;
-                dialougeDelay = true;
+                
             }
         }
     }

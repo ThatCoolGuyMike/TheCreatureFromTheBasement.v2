@@ -7,10 +7,14 @@ public class NoteManager : MonoBehaviour
 {
     public GameObject[] note;
 
-    GameObject gameManager, inGameManager; 
+    GameObject gameManager, inGameManager;
+    int j;
+    bool timerJ;
+    AudioSource findNoice;
     // Start is called before the first frame update
     void Start()
     {
+        findNoice = GetComponent<AudioSource>();
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
         inGameManager = GameObject.FindGameObjectWithTag("inGameManager");
     }
@@ -38,6 +42,23 @@ public class NoteManager : MonoBehaviour
         if(inGameManager.GetComponent<GameManagerScript>().creature2 && gameManager.GetComponent<MainManager>().numDay >= 2 && !SceneManager.GetSceneByName("Basement").isLoaded)
         {
             note[3].SetActive(true);
+        }
+        if (inGameManager.GetComponent<GameManagerScript>().i >= 2000 && j <= 0 && gameManager.GetComponent<MainManager>().numDay < 1)
+        {
+
+            findNoice.Play();
+            timerJ = true;
+            if (timerJ)
+            {
+                j++;
+            }
+            if (j >= 500)
+            {
+                findNoice.Stop();
+                j = 10;
+                timerJ = false;
+            }
+
         }
     }
 }

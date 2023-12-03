@@ -13,7 +13,7 @@ public class RatSpawner_Script : MonoBehaviour
     public GameObject ratDialouge;
     bool timerJ;
     int j;
-
+    AudioSource ratAudio;
     Vector3 ratPosition;
 
     // Start is called before the first frame update
@@ -26,7 +26,7 @@ public class RatSpawner_Script : MonoBehaviour
 
         inGameManager = GameObject.FindGameObjectWithTag("inGameManager");
 
-
+        ratAudio = GetComponent<AudioSource>();
         ratPosition = transform.position;
 
 
@@ -36,6 +36,7 @@ public class RatSpawner_Script : MonoBehaviour
             Instantiate(ratPrefab[0], ratPosition, Quaternion.LookRotation(ratPosition));
             JoanneDialouge.SetActive(true);
             ratDialouge.SetActive(true);
+            ratAudio.Play();
             timerJ=true;
 
             if (mainGameManager.GetComponent<MainManager>().numDay > 4)

@@ -35,6 +35,7 @@ public class MidButtons : MonoBehaviour
         Camera1.SetActive(true);
         Camera2.SetActive(false);
         Camera2Texture.SetActive(false);
+        MidGuyDialouge.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

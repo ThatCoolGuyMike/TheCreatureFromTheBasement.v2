@@ -19,6 +19,7 @@ public class PauseMenu : MonoBehaviour
 
     GameObject gameManager, inGameManager;
 
+    AudioSource buttonAudio;
     void Awake()
     {
         if (Instance != null)
@@ -29,7 +30,7 @@ public class PauseMenu : MonoBehaviour
 
 
         Instance = this;
-
+        buttonAudio = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
 
         optionMenu.SetActive(false);
@@ -46,7 +47,9 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && cameraScript != null && !SceneManager.GetSceneByName("MainMenu").isLoaded)
         {
+            buttonAudio.Play();
             //enables menu and cursor
+
             optionMenu.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;

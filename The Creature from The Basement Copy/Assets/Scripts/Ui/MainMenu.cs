@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
+    AudioSource buttonAudio;
+    bool m_Play, m_Stop;
+
     //makes sure the mainMenu cursor 
     private void Start()
     {
@@ -24,4 +27,5 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();//exits program
     }
+
 }

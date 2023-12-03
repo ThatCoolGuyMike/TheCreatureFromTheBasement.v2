@@ -45,6 +45,8 @@ public class CreatureButton_Script : MonoBehaviour
         Camera1.SetActive(true);
         Camera2.SetActive(false);
         Camera2Texture.SetActive(false);
+        LittleGuyDialouge.SetActive(false);
+        JoanneDialouge.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

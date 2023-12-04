@@ -42,7 +42,7 @@ public class MainManager : MonoBehaviour
     {
         public int totalMeat;
         public int totalEatten;
-
+        public int numDays;
     }
 
     public void SaveVariables()
@@ -51,6 +51,7 @@ public class MainManager : MonoBehaviour
         SaveData data = new SaveData();
         data.totalMeat = totalMeat;
         data.totalEatten = totalEatten;
+        data.numDays = numDay;
 
         string json = JsonUtility.ToJson(data);
         //saves variable to file
@@ -72,6 +73,7 @@ public class MainManager : MonoBehaviour
             //loads defind veryibles
             totalMeat = data.totalMeat;
             totalEatten = data.totalEatten;
+            numDay = data.numDays;
 
         }
     }

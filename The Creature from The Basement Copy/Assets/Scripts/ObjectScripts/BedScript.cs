@@ -14,7 +14,7 @@ public Animator animator;
     GameObject gameManager;
     GameObject inGameManager;
     GameObject JoanneDialouge;
-    public GameObject sleepDialouge;
+    public GameObject sleepDialouge, creatureNoice3, creatureNoice2, creatureNoice1;
     int i, j;
 
     public string isSleeping = "isSleeping";
@@ -36,6 +36,10 @@ public Animator animator;
         canSleep = false;
         JoanneDialouge.SetActive(false);
         sleepDialouge.SetActive(false);
+        creatureNoice3.SetActive(false);
+        creatureNoice1.SetActive(false);
+        creatureNoice2.SetActive(false);
+
         
 
     }
@@ -48,9 +52,21 @@ public Animator animator;
 
             animator.SetTrigger("isSleeping");
             gameManager.GetComponent<MainManager>().numDay++;
+
             timer = true;
             canSleep = false;
-
+            if (inGameManager.GetComponent<GameManagerScript>().creature3)
+            {
+                creatureNoice3.SetActive(true);
+            }
+            if(inGameManager.GetComponent<GameManagerScript>().creature2)
+            {
+                creatureNoice2.SetActive(true);
+            }
+            if(!inGameManager.GetComponent<GameManagerScript>().creature2 && !inGameManager.GetComponent<GameManagerScript>().creature3)
+            {
+          //      creatureNoice1.SetActive(true);
+            }
 
             MainManager.Instance.SaveVariables();//use to save data
 

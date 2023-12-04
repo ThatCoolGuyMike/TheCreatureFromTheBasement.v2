@@ -45,7 +45,7 @@ public class NoteManager : MonoBehaviour
         }
         if (inGameManager.GetComponent<GameManagerScript>().i >= 2000 && j <= 0 && gameManager.GetComponent<MainManager>().numDay < 1)
         {
-
+            if(findNoice!=null)
             findNoice.Play();
             timerJ = true;
             if (timerJ)
@@ -54,7 +54,8 @@ public class NoteManager : MonoBehaviour
             }
             if (j >= 500)
             {
-                findNoice.Stop();
+                if (findNoice != null)
+                    findNoice.Stop();
                 j = 10;
                 timerJ = false;
             }

@@ -12,6 +12,9 @@ public class CreatureButton_Script : MonoBehaviour
     public GameObject JoanneDialouge;
     public GameObject GuyDialouge;
     public GameObject LittleGuyDialouge;
+    public AudioSource EatAudio;
+    public AudioSource FeedAudio;
+    public AudioSource LittleFeedAudio;
 
     int j,i;
     bool timerJ, timerI;
@@ -24,7 +27,9 @@ public class CreatureButton_Script : MonoBehaviour
         GuyDialouge.SetActive(false);
         LittleGuyDialouge.SetActive(true);
         timerI = true;
-        
+        LittleFeedAudio.Play();
+
+
     }
 
 
@@ -37,7 +42,9 @@ public class CreatureButton_Script : MonoBehaviour
             gameManager.GetComponent<MainManager>().totalEatten += 5;
             JoanneDialouge.SetActive(true);
             GuyDialouge.SetActive(true);
+            FeedAudio.Play();
             timerJ = true;
+            EatAudio.Play();
         }
     }
     public void Back()

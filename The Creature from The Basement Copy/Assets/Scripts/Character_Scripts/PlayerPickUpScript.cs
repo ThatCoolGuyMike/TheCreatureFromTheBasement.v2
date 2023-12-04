@@ -15,9 +15,11 @@ public class PlayerPickUpScript : MonoBehaviour
 
     GameObject pickUpSprite;
 
+    AudioSource PickUpAudio;
     private void Start()
     {
         pickUpSprite = GameObject.FindGameObjectWithTag("pickUpSprite");
+        PickUpAudio = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -28,6 +30,10 @@ public class PlayerPickUpScript : MonoBehaviour
         if(CanInteract())
         {
         pickUpSprite.SetActive(true);
+            if(Input.GetKey(KeyCode.E))
+            {
+               // PickUpAudio.Play();
+            }
         }
         else pickUpSprite.SetActive(false);
 

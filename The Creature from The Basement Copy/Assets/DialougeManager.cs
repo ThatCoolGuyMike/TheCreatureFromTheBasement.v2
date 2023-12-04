@@ -11,6 +11,7 @@ public class DialougeManager : MonoBehaviour
     int j;
 
     AudioSource whatAudio;
+    public GameObject TheNoiseAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +20,22 @@ public class DialougeManager : MonoBehaviour
         JoanneDialouge.SetActive(false);
         NoiseDialouge.SetActive(false);
         whatAudio = GetComponent<AudioSource>();
+        TheNoiseAudio.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
+        if (InGameManager.GetComponent<GameManagerScript>().i >= 1900 && j <= 0 && gameManager.GetComponent<MainManager>().numDay < 1)
+        {
+            TheNoiseAudio.SetActive(true);
+
+        }
         if (InGameManager.GetComponent<GameManagerScript>().i >= 2000 && j <= 0 && gameManager.GetComponent<MainManager>().numDay < 1)
         {
+            TheNoiseAudio.SetActive(true);
             JoanneDialouge.SetActive(true);
             NoiseDialouge.SetActive(true);
             whatAudio.Play();

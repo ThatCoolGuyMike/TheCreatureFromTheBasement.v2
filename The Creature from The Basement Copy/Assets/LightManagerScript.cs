@@ -6,14 +6,11 @@ public class LightManagerScript : MonoBehaviour
 {
     public GameObject DayLight, NightLight;
     GameObject inGameManager;
-    public AudioSource dayAudio;
-    public AudioSource nightAudio;
+
     // Start is called before the first frame update
     void Start()
     {
         inGameManager = GameObject.FindGameObjectWithTag("inGameManager");
-        //dayAudio = GetComponent<AudioSource>();
-       // nightAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,14 +20,10 @@ public class LightManagerScript : MonoBehaviour
         if(inGameManager.GetComponent<GameManagerScript>().IsDay)
         {
             DayLight.SetActive(true);
-
             NightLight.SetActive(false);
-            nightAudio.Stop();
         }else
         {
-            dayAudio.Stop();
             DayLight.SetActive(false);
-             nightAudio.Play();
             NightLight.SetActive(true);
         }
     }

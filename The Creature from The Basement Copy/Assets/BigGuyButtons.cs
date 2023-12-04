@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MidButtons : MonoBehaviour
+public class BigGuyButtons : MonoBehaviour
 {
     public GameObject Camera1;
     public GameObject Camera2;
     public GameObject Camera2Texture;
     GameObject gameManager;
-    public GameObject MidGuyDialouge;
+    public GameObject BigGuyDialouge;
     public AudioSource EatAudio;
-    public AudioSource MoreAudio;
+    public AudioSource DoingGoodAudio;
 
     int i;
     bool timerI;
@@ -18,9 +18,9 @@ public class MidButtons : MonoBehaviour
     {
 
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
-        MidGuyDialouge.SetActive(true);
+        BigGuyDialouge.SetActive(true);
         timerI = true;
-        MoreAudio.Play();
+        DoingGoodAudio.Play();
     }
 
 
@@ -33,12 +33,20 @@ public class MidButtons : MonoBehaviour
             gameManager.GetComponent<MainManager>().totalEatten += 5;
         }
     }
+
+    public void FeedSelf()
+    {
+
+            EatAudio.Play();
+            gameManager.GetComponent<MainManager>().totalEatten += 100;
+        
+    }
     public void Back()
     {
         Camera1.SetActive(true);
         Camera2.SetActive(false);
         Camera2Texture.SetActive(false);
-        MidGuyDialouge.SetActive(false);
+        BigGuyDialouge.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -50,7 +58,7 @@ public class MidButtons : MonoBehaviour
         }
         if (i >= 500)
         {
-            MidGuyDialouge.SetActive(false);
+            BigGuyDialouge.SetActive(false);
             i = 0;
             timerI = false;
         }

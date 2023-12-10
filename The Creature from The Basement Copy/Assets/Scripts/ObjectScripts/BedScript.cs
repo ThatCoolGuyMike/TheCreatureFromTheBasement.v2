@@ -14,6 +14,7 @@ public Animator animator;
     GameObject gameManager;
     GameObject inGameManager;
     GameObject JoanneDialouge;
+    public  GameObject JoanneText;
     public GameObject sleepDialouge, creatureNoice3, creatureNoice2, creatureNoice1;
     int i, j;
 
@@ -39,8 +40,8 @@ public Animator animator;
         creatureNoice3.SetActive(false);
         creatureNoice1.SetActive(false);
         creatureNoice2.SetActive(false);
+        JoanneText.SetActive(false);
 
-        
 
     }
 
@@ -80,6 +81,7 @@ public Animator animator;
             NotEppyAudio.Play();
             JoanneDialouge.SetActive(true);
             sleepDialouge.SetActive(true);
+            JoanneText.SetActive(true);
 
             timerJ = true;
 
@@ -135,6 +137,7 @@ public Animator animator;
         {
             JoanneDialouge.SetActive(false);
             sleepDialouge.SetActive(false);
+            JoanneText.SetActive(false);
             j = 0;
             timerJ = false;
         }

@@ -591,7 +591,7 @@ PrefabInstance:
     - target: {fileID: 1975240519, guid: 2455bd251003424448cf7061305bde1b, type: 3}
       propertyPath: Camera1
       value: 
-      objectReference: {fileID: 1669046290}
+      objectReference: {fileID: 1920419901}
     - target: {fileID: 1975240519, guid: 2455bd251003424448cf7061305bde1b, type: 3}
       propertyPath: EatAudio
       value: 
@@ -745,7 +745,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Camera1
       value: 
-      objectReference: {fileID: 1669046290}
+      objectReference: {fileID: 1920419901}
     - target: {fileID: 5005271992275167645, guid: 2455bd251003424448cf7061305bde1b,
         type: 3}
       propertyPath: distanceToPInteract
@@ -4680,7 +4680,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1377329912
 RectTransform:
@@ -6049,12 +6049,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7476564175976590866, guid: b9a272bd30d5a6c4689300809ce89ea0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b9a272bd30d5a6c4689300809ce89ea0, type: 3}
---- !u!1 &1669046290 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7476564175976590893, guid: b9a272bd30d5a6c4689300809ce89ea0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1669046289}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1673239384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6899,6 +6893,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3b9c54fff0bf474698349f84efc449e, type: 3}
+--- !u!1 &1920419901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7561596671373382130, guid: a3b9c54fff0bf474698349f84efc449e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1920419900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1937489390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6945,7 +6945,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Camera1
       value: 
-      objectReference: {fileID: 1669046290}
+      objectReference: {fileID: 1920419901}
     - target: {fileID: 3125694697498746290, guid: 1f1f20f537b6a01428dfe5d21179a7e3,
         type: 3}
       propertyPath: Camera2
@@ -7065,7 +7065,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Camera1
       value: 
-      objectReference: {fileID: 1669046290}
+      objectReference: {fileID: 1920419901}
     - target: {fileID: 5897173379062971922, guid: 1f1f20f537b6a01428dfe5d21179a7e3,
         type: 3}
       propertyPath: Camera2
@@ -7928,7 +7928,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Camera1
       value: 
-      objectReference: {fileID: 1669046290}
+      objectReference: {fileID: 1920419901}
     - target: {fileID: 2221325742245355596, guid: 3f325ade72d8c1c46847df5f3cbadb52,
         type: 3}
       propertyPath: m_Name
@@ -8023,7 +8023,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Camera1
       value: 
-      objectReference: {fileID: 1669046290}
+      objectReference: {fileID: 1920419901}
     - target: {fileID: 6319288664287427067, guid: 3f325ade72d8c1c46847df5f3cbadb52,
         type: 3}
       propertyPath: EatAudio

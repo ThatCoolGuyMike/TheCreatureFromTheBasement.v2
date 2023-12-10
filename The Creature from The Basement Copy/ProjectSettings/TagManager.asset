@@ -15,6 +15,11 @@ TagManager:
   - Bed
   - pickUpSprite
   - JoanneDialouge
+  - Day1Food
+  - Day2Food
+  - Day3Food
+  - Day4Food
+  - Day5Food
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,7 @@ public class LoadSaveScript : MonoBehaviour
     public void SaveColorClicked()
     {
 
-//        MainManager.Instance.SaveVariables();//use to save data
+        MainManager.Instance.SaveVariables();//use to save data
     }
     //method called by buttons
     public void LoadColorClicked()

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BigGuyButtons : MonoBehaviour
 {
+    public GameObject animator;
     public GameObject Camera1;
     public GameObject Camera2;
     public GameObject Camera2Texture;
@@ -11,9 +13,10 @@ public class BigGuyButtons : MonoBehaviour
     public GameObject BigGuyDialouge;
     public AudioSource EatAudio;
     public AudioSource DoingGoodAudio;
+    public AudioSource ScreemAudio;
 
-    int i;
-    bool timerI;
+    int i, j;
+    bool timerI,timerJ;
     private void Start()
     {
 
@@ -38,8 +41,10 @@ public class BigGuyButtons : MonoBehaviour
     {
 
             EatAudio.Play();
-            gameManager.GetComponent<MainManager>().totalEatten += 100;
-        
+            ScreemAudio.Play();
+        animator.SetActive(true);
+        gameManager.GetComponent<MainManager>().totalEatten += 100;
+     timerJ = true;
     }
     public void Back()
     {
@@ -56,11 +61,19 @@ public class BigGuyButtons : MonoBehaviour
         {
             i++;
         }
+        if (timerJ)
+        {
+            j++;
+        }
         if (i >= 500)
         {
             BigGuyDialouge.SetActive(false);
             i = 0;
             timerI = false;
+        }
+        if (j >= 800)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

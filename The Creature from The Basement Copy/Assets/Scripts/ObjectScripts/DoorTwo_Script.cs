@@ -3,42 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DoorTwo_Script : MonoBehaviour
+public class DoorTwo_Script : MonoBehaviour, IInteractable
 {
 
+    public GameObject Lights;
+    GameObject player;
 
-    [SerializeField] float distanceToPInteract; // makes a float to be used to see if the player if close enough
-
-    [SerializeField] string playerTag;
-    // Start is called before the first frame update
     void Start()
     {
-        playerTag = "Player"; // interactible tagged object
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
-        if (DoorCanInteract() && Input.GetKeyDown(KeyCode.E))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+    public void interactAble()
+    {
+        this.GetComponent<MeshRenderer>().enabled = false;
+        Lights.SetActive(true);
 
     }
-
-    public bool DoorCanInteract()
+    public void Update()
     {
-        GameObject[] InteractibleObject = GameObject.FindGameObjectsWithTag(playerTag); //adds the player object to the player tag in script
-
-        foreach (GameObject tempInteractibleObject in InteractibleObject)
+        if (player.GetComponent<InteracterScript>().notInteracting)
         {
-            float distance = Vector3.Distance(transform.position, tempInteractibleObject.transform.position); // gets the distance between the player object and food object
-
-            if (distance < distanceToPInteract) // if statment to see if the player is close enough and presses space
-            {
-
-                return true;
-
-            }
+            this.GetComponent<MeshRenderer>().enabled = true;
+            Lights.SetActive(false);
         }
-        return false;
     }
+
+
+
 }

@@ -29,13 +29,13 @@ public class PlayerPickUpScript : MonoBehaviour
         CanInteract();
         if(CanInteract())
         {
-        pickUpSprite.SetActive(true);
+      //  pickUpSprite.SetActive(true);
             if(Input.GetKey(KeyCode.E))
             {
                // PickUpAudio.Play();
             }
         }
-        else pickUpSprite.SetActive(false);
+        //else pickUpSprite.SetActive(false);
 
     }
 

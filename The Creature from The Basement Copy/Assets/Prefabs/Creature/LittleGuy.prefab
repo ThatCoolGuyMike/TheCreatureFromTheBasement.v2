@@ -862,6 +862,12 @@ MonoBehaviour:
   Camera1: {fileID: 0}
   Camera2: {fileID: 196854511175008271}
   Camera2Texture: {fileID: 1186136762660726479}
+  JoanneDialouge: {fileID: 0}
+  GuyDialouge: {fileID: 0}
+  LittleGuyDialouge: {fileID: 0}
+  EatAudio: {fileID: 0}
+  FeedAudio: {fileID: 0}
+  LittleFeedAudio: {fileID: 0}
 --- !u!1 &196854511175008271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,8 +1085,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3733704, y: 1.3655455, z: 2.8115368}
-  m_Center: {x: 0.0849601, y: 0.08445895, z: -0.048617125}
+  m_Size: {x: 1.3733704, y: 1.3655455, z: 2.07}
+  m_Center: {x: 1.25, y: 1.38, z: 0.64}
 --- !u!114 &5005271992275167645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,12 +1272,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0b089c840249f1b46b60be3ae8d69268,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7072302
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b089c840249f1b46b60be3ae8d69268,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7069834
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b089c840249f1b46b60be3ae8d69268,
         type: 3}
@@ -1286,7 +1292,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0b089c840249f1b46b60be3ae8d69268,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -89.98
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b089c840249f1b46b60be3ae8d69268,
         type: 3}

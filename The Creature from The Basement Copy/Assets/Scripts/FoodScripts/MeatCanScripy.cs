@@ -3,60 +3,34 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MeatCanScripy : MonoBehaviour
+public class MeatCanScripy : MonoBehaviour, IInteractable
 {
-    
-
-        [SerializeField] PlayerPickUpScript playerInteractScript;// gets player script
-
-        [SerializeField] string playerTag = "Player"; // interactible tagged object
-
-        [SerializeField] float distanceToPickUp; // makes a float to be used to see if the player if close enough
-
-
-
+    public GameObject Lights;
     GameObject gameManager;
+    GameObject player;
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
-    }
 
-    void Update()
+
+    }
+    public void Interact()
     {
-        //gets methods 
-        FoodCanInteract();
-
-
-        if (Input.GetKeyDown(KeyCode.E) && FoodCanInteract())// sees if object is able to be interacted with
-        {
-
-            gameManager.GetComponent<MainManager>().totalMeat++;
-            Destroy(gameObject);//distroys self
-            
-
-        }
-
-
+        gameManager.GetComponent<MainManager>().totalMeat++;
+        Destroy(gameObject);//distroys self
     }
-
-
-    public bool FoodCanInteract()
+    public void interactAble()
     {
-        GameObject[] InteractibleObject = GameObject.FindGameObjectsWithTag(playerTag); //adds the player object to the player tag in script
+        Lights.SetActive(true);
 
-        foreach (GameObject tempInteractibleObject in InteractibleObject)
-        {
-            float distance = Vector3.Distance(transform.position, tempInteractibleObject.transform.position); // gets the distance between the player object and food object
-
-            if (distance < distanceToPickUp) // if statment to see if the player is close enough and presses space
-            {
-  
-                return true;
-
-            }
-        }
-        return false;
     }
-  
+    public void Update()
+    {
+        if (player.GetComponent<InteracterScript>().notInteracting)
+        {
+        Lights.SetActive(false);
+        }
+    }
 }

@@ -4,19 +4,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
-public class BedScript : MonoBehaviour
+public class BedScript : MonoBehaviour, IInteractable
 {
-
-public Animator animator;
+   
+    public Animator animator;
     [SerializeField] float distanceToPInteract; // makes a float to be used to see if the player if close enough
 
     [SerializeField] string playerTag;
+    GameObject player;
     GameObject gameManager;
     GameObject inGameManager;
     GameObject JoanneDialouge;
     public  GameObject JoanneText;
+    public GameObject Lights;
     public GameObject sleepDialouge, creatureNoice3, creatureNoice2, creatureNoice1;
     int i, j;
+
+    public bool isSameDay;
 
     public string isSleeping = "isSleeping";
     bool timer, timerJ;
@@ -26,6 +30,7 @@ public Animator animator;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         playerTag = "Player"; // interactible tagged object
        
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
@@ -44,11 +49,9 @@ public Animator animator;
 
 
     }
-
-    void Update()
+    public void Interact()
     {
-        //updates the day count
-        if (Input.GetKey(KeyCode.E) && BedCanInteract() && !inGameManager.GetComponent<GameManagerScript>().IsDay)
+        if (!inGameManager.GetComponent<GameManagerScript>().IsDay)
         {
 
             animator.SetTrigger("isSleeping");
@@ -60,23 +63,19 @@ public Animator animator;
             {
                 creatureNoice3.SetActive(true);
             }
-            if(inGameManager.GetComponent<GameManagerScript>().creature2)
+            if (inGameManager.GetComponent<GameManagerScript>().creature2)
             {
                 creatureNoice2.SetActive(true);
             }
-            if(!inGameManager.GetComponent<GameManagerScript>().creature2 && !inGameManager.GetComponent<GameManagerScript>().creature3)
+            if (!inGameManager.GetComponent<GameManagerScript>().creature2 && !inGameManager.GetComponent<GameManagerScript>().creature3)
             {
-          //      creatureNoice1.SetActive(true);
+                //      creatureNoice1.SetActive(true);
             }
 
             MainManager.Instance.SaveVariables();//use to save data
 
         }
         if (inGameManager.GetComponent<GameManagerScript>().IsDay)
-        {
-            animator.ResetTrigger("isSleeping");
-        }
-        if (Input.GetKeyDown(KeyCode.E) && BedCanInteract() && inGameManager.GetComponent<GameManagerScript>().IsDay)
         {
             NotEppyAudio.Play();
             JoanneDialouge.SetActive(true);
@@ -86,30 +85,30 @@ public Animator animator;
             timerJ = true;
 
         }
+    }
+    public void interactAble()
+    {
+        this.GetComponent<MeshRenderer>().enabled = false;
+        Lights.SetActive(true);
+
+    }
+
+
+    void Update()
+    {
+
+        if (player.GetComponent<InteracterScript>().notInteracting)
+        {
+            this.GetComponent<MeshRenderer>().enabled = true;
+            Lights.SetActive(false);
+        }
+
+     
 
         TimerI();
         TimerJ();
         //Check to see if you just set the toggle to positive
 
-    }
-
-
-    public bool BedCanInteract()
-    {
-        GameObject[] InteractibleObject = GameObject.FindGameObjectsWithTag(playerTag); //adds the player object to the player tag in script
-
-        foreach (GameObject tempInteractibleObject in InteractibleObject)
-        {
-            float distance = Vector3.Distance(transform.position, tempInteractibleObject.transform.position); // gets the distance between the player object and food object
-
-            if (distance < distanceToPInteract) // if statment to see if the player is close enough and presses space
-            {
-
-                return true;
-
-            }
-        }
-        return false;
     }
 
     void TimerI()

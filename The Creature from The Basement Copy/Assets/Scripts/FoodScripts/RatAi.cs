@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
-public class RatAi : MonoBehaviour
+public class RatAi : MonoBehaviour, IInteractable
 {
     public NavMeshAgent agent;
 
-    public Transform player;
+    public Transform playerTransform;
+
+    GameObject player;
 
     public LayerMask whatIsGound, whatIsPlayer;
+    public GameObject Lights;
 
-    //interact
-    [SerializeField] string playerTag = "Player"; // interactible tagged object
     [SerializeField] float distanceToPickUp; // makes a float to be used to see if the player if close enough
     GameObject gameManager;
 
@@ -31,13 +33,32 @@ public class RatAi : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
     }
 
+    public void Interact()
+    {
+
+        gameManager.GetComponent<MainManager>().totalMeat += 5;
+        Destroy(gameObject);//distroys self
+    }
+    public void interactAble()
+    {
+        this.GetComponent<SkinnedMeshRenderer>().enabled = false;
+        Lights.SetActive(true);
+
+    }
+
     private void Update()
     {
+        if (player.GetComponent<InteracterScript>().notInteracting)
+        {
+            this.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            Lights.SetActive(false);
+        }
         //check if player is in attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInRunRange = Physics.CheckSphere(transform.position, runRange, whatIsPlayer);
@@ -45,15 +66,6 @@ public class RatAi : MonoBehaviour
         if (playerInSightRange && !playerInRunRange) Romming();
         if (playerInSightRange && playerInRunRange) RunFromPlayer();
         if (!playerInSightRange && !playerInRunRange) Idle();
-
-        if (Input.GetKeyDown(KeyCode.E) && RatCanInteract())// sees if object is able to be interacted with
-        {
-
-            gameManager.GetComponent<MainManager>().totalMeat += 5;
-            Destroy(gameObject);//distroys self
-
-
-        }
     }
 
     private void Romming()
@@ -85,7 +97,7 @@ public class RatAi : MonoBehaviour
 
     private void RunFromPlayer()
     {
-        agent.SetDestination(walkpont - player.position*3);
+        agent.SetDestination(walkpont - playerTransform.position*3);
     }
 
     private void Idle()
@@ -93,24 +105,6 @@ public class RatAi : MonoBehaviour
         //make enemy not move
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
-    }
-
-    public bool RatCanInteract()
-    {
-        GameObject[] InteractibleObject = GameObject.FindGameObjectsWithTag(playerTag); //adds the player object to the player tag in script
-
-        foreach (GameObject tempInteractibleObject in InteractibleObject)
-        {
-            float distance = Vector3.Distance(transform.position, tempInteractibleObject.transform.position); // gets the distance between the player object and food object
-
-            if (distance < distanceToPickUp) // if statment to see if the player is close enough and presses space
-            {
-
-                return true;
-
-            }
-        }
-        return false;
+        transform.LookAt(playerTransform);
     }
 }

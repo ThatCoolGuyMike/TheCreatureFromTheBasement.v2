@@ -28,12 +28,12 @@ public class DialougeManager : MonoBehaviour
     {
 
 
-        if (InGameManager.GetComponent<GameManagerScript>().i >= 1600 && j <= 0 && gameManager.GetComponent<MainManager>().numDay < 1)
+        if (InGameManager.GetComponent<GameManagerScript>().i >= 31 && j <= 0 && gameManager.GetComponent<MainManager>().numDay < 1)
         {
             TheNoiseAudio.SetActive(true);
 
         }
-        if (InGameManager.GetComponent<GameManagerScript>().i >= 1700 && j <= 0 && gameManager.GetComponent<MainManager>().numDay < 1)
+        if (InGameManager.GetComponent<GameManagerScript>().i >= 32 && j <= 0 && gameManager.GetComponent<MainManager>().numDay < 1)
         {
             TheNoiseAudio.SetActive(true);
             JoanneDialouge.SetActive(true);

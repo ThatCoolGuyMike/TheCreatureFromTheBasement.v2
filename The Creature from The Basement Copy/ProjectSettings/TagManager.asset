@@ -20,6 +20,7 @@ TagManager:
   - Day3Food
   - Day4Food
   - Day5Food
+  - FoodDays
   layers:
   - Default
   - TransparentFX

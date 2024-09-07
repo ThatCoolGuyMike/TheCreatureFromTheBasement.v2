@@ -265,11 +265,11 @@ GameObject:
   - component: {fileID: 45228044}
   m_Layer: 0
   m_Name: FoodDays
-  m_TagString: Untagged
+  m_TagString: FoodDays
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &45228044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6812,6 +6812,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7561596671373382130, guid: a3b9c54fff0bf474698349f84efc449e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7561596671382677112, guid: a3b9c54fff0bf474698349f84efc449e,
         type: 3}
       propertyPath: m_TagString
@@ -6872,6 +6877,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1281921288536035992, guid: 1f1f20f537b6a01428dfe5d21179a7e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 276
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983634469052109111, guid: 1f1f20f537b6a01428dfe5d21179a7e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 364
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400831917488625437, guid: 1f1f20f537b6a01428dfe5d21179a7e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 106
+      objectReference: {fileID: 0}
     - target: {fileID: 3125694697498746290, guid: 1f1f20f537b6a01428dfe5d21179a7e3,
         type: 3}
       propertyPath: Camera1
@@ -6926,6 +6946,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137912180136404155, guid: 1f1f20f537b6a01428dfe5d21179a7e3,
+        type: 3}
+      propertyPath: m_ScaleFactor
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4612182940810492897, guid: 1f1f20f537b6a01428dfe5d21179a7e3,
         type: 3}
@@ -6985,7 +7010,7 @@ PrefabInstance:
     - target: {fileID: 5383977916690233258, guid: 1f1f20f537b6a01428dfe5d21179a7e3,
         type: 3}
       propertyPath: m_Size.z
-      value: 0.52
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 5383977916690233258, guid: 1f1f20f537b6a01428dfe5d21179a7e3,
         type: 3}
@@ -7783,6 +7808,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 135989417, guid: 3f325ade72d8c1c46847df5f3cbadb52, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 264
+      objectReference: {fileID: 0}
     - target: {fileID: 135989418, guid: 3f325ade72d8c1c46847df5f3cbadb52, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -7819,6 +7848,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1322023394, guid: 3f325ade72d8c1c46847df5f3cbadb52, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 464.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1823796460, guid: 3f325ade72d8c1c46847df5f3cbadb52, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -7854,6 +7887,14 @@ PrefabInstance:
     - target: {fileID: 1823796460, guid: 3f325ade72d8c1c46847df5f3cbadb52, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882477722, guid: 3f325ade72d8c1c46847df5f3cbadb52, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -620.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882477722, guid: 3f325ade72d8c1c46847df5f3cbadb52, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 368.19998
       objectReference: {fileID: 0}
     - target: {fileID: 1102676399833725888, guid: 3f325ade72d8c1c46847df5f3cbadb52,
         type: 3}
@@ -7944,6 +7985,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569276600670812731, guid: 3f325ade72d8c1c46847df5f3cbadb52,
+        type: 3}
+      propertyPath: m_ScaleFactor
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5569276601707020915, guid: 3f325ade72d8c1c46847df5f3cbadb52,
         type: 3}

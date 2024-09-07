@@ -9,9 +9,9 @@ public class GameManagerScript : MonoBehaviour
     public GameObject JoanneDialouge;
     public GameObject NoiseDialouge;
     public static GameManagerScript Instance;
-    GameObject gameManager, bed;
+    GameObject gameManager, bed, FoodDays;
     public bool creature2, creature3;
-    public int i, j;
+    public float i, j;
     public bool IsDay, IsInBasement, timerJ;
     // Start is called before the first frame update
     private void Awake()
@@ -25,6 +25,8 @@ public class GameManagerScript : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+
+
     }
     void Start()
     {
@@ -36,7 +38,7 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-                if(SceneManager.GetSceneByName("MainFloor").isLoaded && bed == null)
+        if(SceneManager.GetSceneByName("MainFloor").isLoaded && bed == null)
         {
         bed = GameObject.FindGameObjectWithTag("Bed");
         }
@@ -55,19 +57,28 @@ public class GameManagerScript : MonoBehaviour
 
         if(bed != null && !bed.GetComponent<BedScript>().canSleep)
         {
+            /*
+            if (SceneManager.GetSceneByName("MainFloor").isLoaded)
+            {
+                FoodDays = GameObject.FindGameObjectWithTag("FoodDays");
+            }
+            */
+
             IsDay = true;
-            i++;
-            if(i >= 5000)
+           // FoodDays.SetActive(true);
+            i += Time.deltaTime;
+            if(i >= 60)
             {
                 bed.GetComponent<BedScript>().canSleep = true;
                 i = 0;
                 IsDay = false;
+               // FoodDays.SetActive(false);
             }
            
         }
         if(SceneManager.GetSceneByName("Basement").isLoaded)
         {
-            i = 5000;
+            i = 60;
             IsInBasement = true;
         }
 

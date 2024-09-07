@@ -5,10 +5,9 @@ using UnityEngine;
 public class CameraHolder : MonoBehaviour
 {
     public Transform cameraPosition;
-
-    // Update is called once per frame
     private void Update()
     {
+        //makes the hole camera attached to the character camera postion
         transform.position = cameraPosition.position;
     }
 }

@@ -8,12 +8,13 @@ public class MeatCanScripy : MonoBehaviour, IInteractable
     public GameObject Lights;
     GameObject gameManager;
     GameObject player;
+    GameObject CanManger;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.FindGameObjectWithTag("gamemanager");
-
+        
 
     }
     public void Interact()

@@ -20,9 +20,12 @@ public class InteracterScript : MonoBehaviour
         pickUpSprite = GameObject.FindGameObjectWithTag("pickUpSprite");
         PickUpAudio = GetComponent<AudioSource>();
     }
+
     private void Update()
     {
+        //casts a ray to look for a ray soures
         Ray r = new Ray(interactorSoure.position, interactorSoure.forward);
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (Physics.Raycast(r, out RaycastHit hitInfo, interactRange))
